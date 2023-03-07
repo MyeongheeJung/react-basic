@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import FilterableProductTable from "./CategoryRow/FilterableProductTable";
+import { PRODUCTS } from "./CategoryRow/PRODUCTS";
+import Toolbar from "./ReuseButton/Toolbar";
+import Game from "./TicTacToe/Game";
 
 function App() {
+  const [section, setSection] = useState("1");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav>
+        {Array.from(Array(3), (_, i) => i + 1).map((li) => (
+          <>
+            <span>
+              <button onClick={(e) => setSection(e.target.innerText)}>
+                {li}
+              </button>
+            </span>
+          </>
+        ))}
+      </nav>
+      {section === "1" && <Toolbar />}
+      {section === "2" && <FilterableProductTable products={PRODUCTS} />}
+      {section === "3" && <Game />}
     </div>
   );
 }
