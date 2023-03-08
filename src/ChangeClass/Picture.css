@@ -1,0 +1,13 @@
+.backgroud {
+  background-color: aquamarine;
+  width: 100vw;
+  height: 100vh;
+}
+
+.backgound--active {
+  background-color: white;
+}
+
+.picture--active {
+  border: 10px solid burlywood;
+}
